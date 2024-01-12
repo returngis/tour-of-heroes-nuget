@@ -1,0 +1,21 @@
+services:
+  app:     
+      image: mcr.microsoft.com/devcontainers/dotnet:1-8.0-bookworm"
+      volumes:
+        - ../..:/workspaces:cached
+      # Overrides default command so things don't shut down after the process ends.
+      command: sleep infinity
+      # Runs app on the same network as the database container, allows "forwardPorts" in devcontainer.json function.
+      network_mode: service:nexus
+
+      # Use "forwardPorts" in **devcontainer.json** to forward an app port locally. 
+      # (Adding the "ports" property to this file will not forward from a Codespace.)
+  nexus:
+    image: sonatype/nexus3
+    ports:
+      - "8081:8081"
+    volumes:
+      - nexus-data:/nexus-data
+    environment:
+      - INSTALL4J_ADD_VM_PARAMS=-Xms1200m -Xmx1200m -XX:MaxDirectMemorySize=2g -Djava.util.prefs.userRoot=/nexus-data/javaprefs
+    restart: always
