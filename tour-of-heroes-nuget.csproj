@@ -1,0 +1,15 @@
+﻿<Project Sdk="Microsoft.NET.Sdk">
+
+  <PropertyGroup>
+    <TargetFramework>net8.0</TargetFramework>
+    <RootNamespace>tour_of_heroes_nuget</RootNamespace>
+    <ImplicitUsings>enable</ImplicitUsings>
+    <Nullable>enable</Nullable>
+
+    <PackageId>tour-of-heroes-nuget</PackageId>
+    <Version>1.0.0</Version>
+    <Authors>Gisela Torres</Authors>
+    <Company>returngis</Company>
+    <Description>Library with utilities for heroes.</Description>
+  </PropertyGroup>
+</Project>
