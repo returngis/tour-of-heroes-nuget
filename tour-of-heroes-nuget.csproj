@@ -11,5 +11,8 @@
     <Authors>Gisela Torres</Authors>
     <Company>returngis</Company>
     <Description>Library with utilities for heroes.</Description>
+
+    <RepositoryUrl>https://github.com/returngis/tour-of-heroes-nuget</RepositoryUrl>
+
   </PropertyGroup>
 </Project>
