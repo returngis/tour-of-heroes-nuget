@@ -29,4 +29,4 @@ jobs:
     - name: Generate Nuget package
       run: dotnet pack
     - name: Publish Nuget package
-      run: dotnet nuget push **/*.nupkg --source https://nuget.pkg.github.com/${{ env.ORG }}/index.json --api-key ${{ secrets.PAT }}
+      run: dotnet nuget push **/*.nupkg --source https://nuget.pkg.github.com/${{ env.ORG }}/index.json --api-key ${{ secrets.PAT }} --skip-duplicate
