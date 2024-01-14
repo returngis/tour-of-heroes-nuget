@@ -9,7 +9,7 @@ cat <<EOF > nuget.config
 <configuration>
     <packageSources>
         <clear />
-        <add key="nexus" value="http://localhost:8081/repository/nuget-hosted/" />
+        <add key="nexus" value="http://nexus:8081/repository/nuget-group/index.json" />
     </packageSources>
     <packageSourceCredentials>
         <nexus>
@@ -24,4 +24,6 @@ dotnet build
 
 dotnet pack
 
-dotnet nuget push ./bin/Release/tour-of-heroes-nuget.1.0.0.nupkg --api-key $API_KEY --source http://localhost:8081/repository/nuget-hosted/
+dotnet nuget push ./bin/Release/tour-of-heroes-nuget.1.0.0.nupkg --source nexus
+
+
