@@ -9,11 +9,11 @@ on:
 env:
   ORG: "returngis"
 
-permissions:
-  packages: write    
-
 jobs:
-  build:   
+  build:
+    permissions:
+      issues: write
+      pull-requests: write
     runs-on: ubuntu-latest
     steps:
     - uses: actions/checkout@v3
