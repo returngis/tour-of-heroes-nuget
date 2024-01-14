@@ -1,32 +1,42 @@
 // For format details, see https://aka.ms/devcontainer.json. For config options, see the
 // README at: https://github.com/devcontainers/templates/tree/main/src/dotnet
 {
-	"name": "Heroes Library demo",
+	"name": "C# (.NET)",
 	// Or use a Dockerfile or Docker Compose file. More info: https://containers.dev/guide/dockerfile
-	// "image": "mcr.microsoft.com/devcontainers/dotnet:1-8.0-bookworm",
+	// "image": "mcr.microsoft.com/devcontainers/dotnet:1-8.0-bookworm"
 	"dockerComposeFile": "docker-compose.yml",
 	"service": "app",
 	"workspaceFolder": "/workspaces/${localWorkspaceFolderBasename}",
-	"features": {
-		"ghcr.io/devcontainers/features/github-cli:1": {}
-	}
-
+	"customizations": {
+		"vscode": {
+			"extensions": [
+				"tonybaloney.vscode-pets"
+			],
+			"settings": {
+				"vscode-pets.petType": "clippy",
+				"vscode-pets.petName": "Clippy",
+				"vscode-pets.petPhrase": "It looks like you're writing a C# program. Would you like help?"
+				
+			}
+		}
+	},
 	// Features to add to the dev container. More info: https://containers.dev/features.
 	// "features": {},
 
 	// Use 'forwardPorts' to make a list of ports inside the container available locally.
-	// "forwardPorts": [5000, 5001],
-	// "portsAttributes": {
-	//		"5001": {
-	//			"protocol": "https"
-	//		}
-	// }
+	"forwardPorts": [8081],
+	"portsAttributes": {
+			"8081": {
+				"protocol": "http",
+				"label": "Nexus"
+			}
+	}
 
 	// Use 'postCreateCommand' to run commands after the container is created.
 	// "postCreateCommand": "dotnet restore",
 
 	// Configure tool-specific properties.
-	// "customizations": {},
+	
 
 	// Uncomment to connect as root instead. More info: https://aka.ms/dev-containers-non-root.
 	// "remoteUser": "root"
