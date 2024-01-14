@@ -1,29 +1,19 @@
-# Using Docker Desktop exec this in the nuget container: cat /nexus-data/admin.password
+docker volume create --name nexus-data
+
+docker run -d -p 8081:8081 --name nexus -v nexus-data:/nexus-data sonatype/nexus3
+
+# Wait for nexus to start
+sleep 60
+
+# Get the admin password
+docker exec nexus cat /nexus-data/admin.password
 
 # Go to http://localhost:8081/#user/nugetapitoken
 
-API_KEY="dfc7f9c2-264d-3ff9-8ec1-16e6a70e1aea"
-
-cat <<EOF > nuget.config
-<?xml version="1.0" encoding="utf-8"?>
-<configuration>
-    <packageSources>
-        <clear />
-        <add key="nexus" value="http://nexus:8081/repository/nuget-group/index.json" />
-    </packageSources>
-    <packageSourceCredentials>
-        <nexus>
-            <add key="Username" value="admin" />
-            <add key="ClearTextPassword" value="$API_KEY" />
-        </nexus>
-    </packageSourceCredentials>
-</configuration>
-EOF
+$API_KEY="f2e96588-8865-36ab-978e-8908df69c11a"
 
 dotnet build
 
 dotnet pack
 
-dotnet nuget push ./bin/Release/tour-of-heroes-nuget.1.0.0.nupkg --source nexus
-
-
+dotnet nuget push ./bin/Release/tour-of-heroes-nuget.1.0.0.nupkg --source http://localhost:8081/repository/nuget-hosted/ --api-key $API_KEY
