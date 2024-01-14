@@ -33,6 +33,6 @@ jobs:
     - name: Generate Nuget package
       run: dotnet pack
     - name: Publish Nuget package
-      run: dotnet nuget push **/*.nupkg --source github --api-key ${{ secrets.GITHUB_TOKEN }}
+      run: dotnet nuget push **/*.nupkg --source https://nuget.pkg.github.com/returngis/index.json --api-key ${{ secrets.GITHUB_TOKEN }}
       env:
         NUGET_AUTH_TOKEN: ${{ secrets.GITHUB_TOKEN }}
