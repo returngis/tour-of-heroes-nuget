@@ -10,9 +10,7 @@ env:
   ORG: "returngis"
 
 jobs:
-  build:
-    permissions:
-      packages: write    
+  build:   
     runs-on: ubuntu-latest
     steps:
     - uses: actions/checkout@v3
