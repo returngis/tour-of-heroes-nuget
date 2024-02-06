@@ -13,6 +13,7 @@
     <Description>Library with utilities for heroes.</Description>
 
     <RepositoryUrl>https://github.com/returngis/tour-of-heroes-nuget</RepositoryUrl>
+    <PackageReadmeFile>README.md</PackageReadmeFile>
 
   </PropertyGroup>
 </Project>
