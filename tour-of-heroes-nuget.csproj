@@ -7,7 +7,7 @@
     <Nullable>enable</Nullable>
     <IsPackable>true</IsPackable>
     <PackageId>tour-of-heroes-nuget</PackageId>
-    <Version>1.0.4</Version>
+    <Version>1.0.5</Version>
     <Authors>Gisela Torres</Authors>
     <Company>returngis</Company>
     <Description>Library with utilities for heroes.</Description>
