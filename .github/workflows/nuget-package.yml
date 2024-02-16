@@ -3,21 +3,15 @@ name: Generate Nuget package
 on:
   push:
     branches: [ "main" ]
-  pull_request:
-    branches: [ "main" ]
 
 env:
   ORG: "returngis"
-
-permissions:
-  contents: read
-  packages: write
 
 jobs:
   build:      
     runs-on: ubuntu-latest
     steps:
-    - uses: actions/checkout@v3
+    - uses: actions/checkout@v4
     - name: Setup .NET
       uses: actions/setup-dotnet@v3
       with:
@@ -28,6 +22,6 @@ jobs:
       run: dotnet pack
     - name: Publish Nuget package
       run: | 
-        #dotnet nuget push **/*.nupkg --source https://nuget.pkg.github.com/${{ env.ORG }}/index.json --api-key ${{ secrets.PAT }} --skip-duplicate
-        dotnet nuget push **/*.nupkg --source https://nuget.pkg.github.com/${{ env.ORG }}/index.json --api-key ${{ secrets.GITHUB_TOKEN }} --skip-duplicate
+        dotnet nuget push **/*.nupkg --source https://nuget.pkg.github.com/${{ env.ORG }}/index.json --api-key ${{ secrets.PAT }} --skip-duplicate
+        #dotnet nuget push **/*.nupkg --source https://nuget.pkg.github.com/${{ env.ORG }}/index.json --api-key ${{ secrets.GITHUB_TOKEN }} --skip-duplicate
         
